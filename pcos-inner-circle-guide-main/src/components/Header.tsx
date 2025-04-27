@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
+import { Link } from "react-router-dom"; // 🛑 Important: Import Link
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
           <div className="flex-shrink-0 flex items-center">
             <span className="font-semibold text-xl tracking-tight text-pcos-purple">PCOS Buddy</span>
           </div>
-          
+
           {/* Mobile menu button */}
           <div className="flex md:hidden">
             <button
@@ -25,64 +25,61 @@ const Header: React.FC = () => {
               className="text-gray-500 hover:text-gray-700 focus:outline-none"
               onClick={toggleMenu}
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-          
+
           {/* Desktop menu */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 items-center">
             <a href="#about" className="text-gray-600 hover:text-pcos-purple transition-colors">About</a>
             <a href="#how-it-works" className="text-gray-600 hover:text-pcos-purple transition-colors">How It Works</a>
             <a href="#features" className="text-gray-600 hover:text-pcos-purple transition-colors">Features</a>
             <a href="#testimonials" className="text-gray-600 hover:text-pcos-purple transition-colors">Testimonials</a>
+
+            {/* Login / Signup */}
+            <Link to="/login" className="text-gray-600 hover:text-pcos-purple transition-colors">
+              Login
+            </Link>
+            <Link to="/signup" className="text-gray-600 hover:text-pcos-purple transition-colors">
+              Signup
+            </Link>
+
+            {/* Join Waitlist Button */}
             <Button className="bg-pcos-purple hover:bg-pcos-purple/90" asChild>
               <a href="#waitlist">Join Waitlist</a>
             </Button>
           </nav>
         </div>
       </div>
-      
+
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a 
-              href="#about" 
-              className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <a href="#about" className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md" onClick={() => setIsMenuOpen(false)}>
               About
             </a>
-            <a 
-              href="#how-it-works" 
-              className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <a href="#how-it-works" className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md" onClick={() => setIsMenuOpen(false)}>
               How It Works
             </a>
-            <a 
-              href="#features" 
-              className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <a href="#features" className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md" onClick={() => setIsMenuOpen(false)}>
               Features
             </a>
-            <a 
-              href="#testimonials" 
-              className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <a href="#testimonials" className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md" onClick={() => setIsMenuOpen(false)}>
               Testimonials
             </a>
+
+            {/* Login / Signup inside mobile menu */}
+            <Link to="/login" className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md" onClick={() => setIsMenuOpen(false)}>
+              Login
+            </Link>
+            <Link to="/signup" className="block px-3 py-2 text-gray-600 hover:text-pcos-purple hover:bg-gray-50 rounded-md" onClick={() => setIsMenuOpen(false)}>
+              Signup
+            </Link>
+
+            {/* Join Waitlist Button */}
             <Button className="w-full mt-2 bg-pcos-purple hover:bg-pcos-purple/90" asChild>
-              <a 
-                href="#waitlist"
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <a href="#waitlist" onClick={() => setIsMenuOpen(false)}>
                 Join Waitlist
               </a>
             </Button>
